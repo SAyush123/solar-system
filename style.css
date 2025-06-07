@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#canvas-container {
+    width: 100%;
+    height: 100%;
+}
+
+.control-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 20, 40, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+    max-width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.control-panel h2 {
+    color: #00ffff;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.planet-control {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.planet-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.planet-control input[type="range"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.speed-value {
+    font-size: 10px;
+    color: #ccc;
+    text-align: center;
+}
+
+.main-controls {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn {
+    padding: 8px 16px;
+    margin: 5px;
+    background: #00ffff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #ffffff;
+    transform: scale(1.05);
+}
+
+.btn.active {
+    background: #ff4444;
+}
+
+.info-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 20, 40, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+    backdrop-filter: blur(10px);
+    font-size: 12px;
+}
+
+.planet-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+    border: 1px solid #00ffff;
+}
+
+@media (max-width: 768px) {
+    .control-panel {
+        max-width: 250px;
+        padding: 15px;
+    }
+
+    .control-panel h2 {
+        font-size: 16px;
+    }
+
+    .planet-control label {
+        font-size: 11px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
