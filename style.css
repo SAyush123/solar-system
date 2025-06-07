@@ -40,39 +40,58 @@ body {
     left: 0;
 }
 
-.sidebar-toggle {
+.swipe-indicator {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 80px;
+    background: rgba(0, 255, 255, 0.8);
+    border-radius: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.toggle-btn {
-    padding: 12px 20px;
-    background: rgba(0, 255, 255, 0.9);
-    color: #000;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    transition: all 0.3s;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    opacity: 0.8;
+    transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    pointer-events: all;
+    cursor: pointer;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
 }
 
-.toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+.swipe-indicator::after {
+    content: '→';
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    animation: swipeHint 2s infinite;
 }
 
-.toggle-btn.active {
-    background: rgba(255, 68, 68, 0.9);
-    color: #fff;
+.sidebar.active .swipe-indicator::after {
+    content: '←';
+}
+
+.swipe-indicator:hover {
+    opacity: 1;
+    background: rgba(0, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
+}
+
+@keyframes swipeHint {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(6px);
+        opacity: 1;
+    }
 }
 
 .control-panel {
@@ -176,6 +195,15 @@ body {
         left: -280px;
     }
 
+    .swipe-indicator {
+        width: 35px;
+        height: 70px;
+    }
+
+    .swipe-indicator::after {
+        font-size: 18px;
+    }
+
     .control-panel {
         padding: 15px;
     }
@@ -193,12 +221,29 @@ body {
         font-size: 11px;
     }
 
-    .toggle-btn {
-        padding: 10px 16px;
-        font-size: 12px;
+    .sidebar.active~#container .info-panel {
+        left: 300px;
+    }
+}
+
+@media (min-width: 769px) {
+    .swipe-indicator {
+        display: flex;
+        cursor: pointer;
+        pointer-events: all;
+    }
+
+    .swipe-indicator:hover {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .sidebar {
+        width: 350px;
+        left: -350px;
     }
 
     .sidebar.active~#container .info-panel {
-        left: 300px;
+        left: 370px;
     }
 }

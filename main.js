@@ -26,7 +26,100 @@ class SolarSystem {
         this.init();
         this.createControls();
         this.animate();
-        this.setupEventListeners();
+        this.setupSwipeGestures();
+    }
+
+    setupSwipeGestures() {
+        const sidebar = document.getElementById('sidebar');
+        const swipeIndicator = document.getElementById('swipeIndicator');
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+        let isDragging = false;
+
+        const toggleSidebar = () => {
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                swipeIndicator.style.opacity = '0.8';
+            } else {
+                sidebar.classList.add('active');
+                swipeIndicator.style.opacity = '0.6';
+            }
+        };
+
+        // Touch events for mobile
+        const handleTouchStart = (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            isDragging = false;
+        };
+
+        const handleTouchMove = (e) => {
+            if (!isDragging) {
+                touchEndX = e.touches[0].clientX;
+                touchEndY = e.touches[0].clientY;
+
+                const deltaX = touchEndX - touchStartX;
+                const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+
+                // Only trigger swipe if horizontal movement is significant and vertical is minimal
+                if (Math.abs(deltaX) > 10 && deltaY < 50) {
+                    isDragging = true;
+                    e.preventDefault();
+                }
+            }
+        };
+
+        const handleTouchEnd = (e) => {
+            if (!isDragging) return;
+
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = Math.abs(touchEndY - touchStartY);
+
+            // Minimum swipe distance and ensure it's more horizontal than vertical
+            if (Math.abs(deltaX) > 50 && deltaY < 100) {
+                if (deltaX > 0 && !sidebar.classList.contains('active')) {
+                    // Swipe right - open sidebar
+                    sidebar.classList.add('active');
+                    swipeIndicator.style.opacity = '0.6';
+                } else if (deltaX < 0 && sidebar.classList.contains('active')) {
+                    // Swipe left - close sidebar
+                    sidebar.classList.remove('active');
+                    swipeIndicator.style.opacity = '0.8';
+                }
+            }
+
+            isDragging = false;
+        };
+
+        // Add touch event listeners for mobile devices
+        if ('ontouchstart' in window) {
+            document.addEventListener('touchstart', handleTouchStart, { passive: false });
+            document.addEventListener('touchmove', handleTouchMove, { passive: false });
+            document.addEventListener('touchend', handleTouchEnd, { passive: false });
+        }
+
+        // Click event for both desktop and mobile
+        swipeIndicator.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        // Desktop: Also allow clicking anywhere on left edge to toggle
+        document.addEventListener('click', (e) => {
+            if (e.clientX < 50 && e.clientY > 100 && e.clientY < window.innerHeight - 100) {
+                toggleSidebar();
+            }
+        });
+
+        // Keyboard shortcut for desktop (Ctrl + Space)
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.code === 'Space') {
+                e.preventDefault();
+                toggleSidebar();
+            }
+        });
     }
 
     init() {
@@ -259,26 +352,6 @@ class SolarSystem {
     }
 
     setupEventListeners() {
-        // Sidebar toggle functionality
-        const sidebar = document.getElementById('sidebar');
-        const controlsBtn = document.getElementById('controlsBtn');
-        const viewBtn = document.getElementById('viewBtn');
-
-        controlsBtn.addEventListener('click', () => {
-            sidebar.classList.add('active');
-            controlsBtn.classList.add('active');
-            viewBtn.classList.remove('active');
-        });
-
-        viewBtn.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            controlsBtn.classList.remove('active');
-            viewBtn.classList.add('active');
-        });
-
-        // Set initial view state
-        viewBtn.classList.add('active');
-
         // Pause/Resume button
         document.getElementById('pauseBtn').addEventListener('click', () => {
             this.isPaused = !this.isPaused;
@@ -303,20 +376,6 @@ class SolarSystem {
         // Tooltip on hover
         this.renderer.domElement.addEventListener('mousemove', (e) => {
             this.handleMouseMove(e);
-        });
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                const sidebar = document.getElementById('sidebar');
-                const toggleBtns = document.querySelector('.sidebar-toggle');
-
-                if (!sidebar.contains(e.target) && !toggleBtns.contains(e.target)) {
-                    if (sidebar.classList.contains('active')) {
-                        viewBtn.click();
-                    }
-                }
-            }
         });
     }
 
