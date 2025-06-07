@@ -343,10 +343,10 @@ class SolarSystem {
         const btn = document.getElementById('themeBtn');
         if (this.isDarkMode) {
             this.renderer.setClearColor(0x000011);
-            btn.textContent = '🌞 Light Mode';
+            btn.textContent = 'Light Mode';
         } else {
             this.renderer.setClearColor(0x87CEEB);
-            btn.textContent = '🌙 Dark Mode';
+            btn.textContent = 'Dark Mode';
         }
     }
 
