@@ -12,8 +12,7 @@ This project is a fully interactive, mobile-responsive 3D simulation of the sola
 * Pause/Resume animation
 * Dark/Light mode toggle
 * Background stars
-* Planet info tooltip on hover
-* Mobile swipe gesture for opening control panel
+* Planet info on click
 * Responsive and optimized for all modern browsers
 
 ---
@@ -61,8 +60,7 @@ Or run a local server (recommended for better performance):
 * Planets are modeled as spheres and animated using `requestAnimationFrame` + `THREE.Clock`.
 * Each planet has its own orbit group and rotation logic.
 * Speed is dynamically adjustable via sliders built with plain JavaScript.
-* Tooltip info and interaction via raycasting.
-* Swipe gestures for mobile sidebar controls.
+* Mobile sidebar controls.
 
 ---
 

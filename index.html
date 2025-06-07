@@ -7,34 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="loading">
+        <div class="loader"></div>
+        <p style="margin-top: 20px;">Loading Solar System...</p>
+    </div>
+
     <div id="container">
-        <!-- Swipe Indicator -->
-        <div class="swipe-indicator" id="swipeIndicator"></div>
-        
-        <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <div class="control-panel">
-                <h2>Solar System Controls</h2>
-                
-                <div class="main-controls">
-                    <button id="pauseBtn" class="btn">Pause</button>
-                    <button id="themeBtn" class="btn">Light Mode</button>
-                </div>
-                
-                <div id="planet-controls"></div>
-            </div>
-        </div>
-        
         <div id="canvas-container"></div>
         
-        <div class="info-panel">
-            <div><strong>Controls:</strong></div>
-            <div>• Mouse: Rotate view</div>
-            <div>• Wheel: Zoom in/out</div>
-            <div>• Hover: Planet info</div>
+        <div id="control-panel">
+            <h2>Solar System Controls</h2>
+            
+            <div class="main-controls">
+                <button id="pause-resume" class="control-btn">Pause</button>
+                <button id="theme-toggle" class="control-btn">Dark Theme</button>
+            </div>
+
+            <div id="planet-controls">
+                <!-- Planet controls will be dynamically generated -->
+            </div>
         </div>
-        
-        <div id="tooltip" class="planet-tooltip"></div>
+
+        <div id="info-panel">
+            <h3>3D Solar System</h3>
+            <p>• Use mouse/touch to rotate view</p>
+            <p>• Scroll/pinch to zoom</p>
+            <p>• Adjust planet speeds with controls</p>
+            <p>• Click planets for information</p>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
