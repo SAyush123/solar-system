@@ -4,28 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Solar System Simulation</title>
-    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
-        <div id="canvas-container"></div>
-        
-        <div class="control-panel">
-            <h2>Solar System Controls</h2>
-            
-            <div class="main-controls">
-                <button id="pauseBtn" class="btn">Pause</button>
-                <button id="themeBtn" class="btn">Light Mode</button>
-            </div>
-            
-            <div id="planet-controls"></div>
+        <!-- Sidebar Toggle Buttons -->
+        <div class="sidebar-toggle">
+            <button id="controlsBtn" class="toggle-btn">🎛️ Controls</button>
+            <button id="viewBtn" class="toggle-btn">🌌 View</button>
         </div>
+        
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="control-panel">
+                <h2>🌟 Solar System Controls</h2>
+                
+                <div class="main-controls">
+                    <button id="pauseBtn" class="btn">⏸️ Pause</button>
+                    <button id="themeBtn" class="btn">🌞 Light Mode</button>
+                </div>
+                
+                <div id="planet-controls"></div>
+            </div>
+        </div>
+        
+        <div id="canvas-container"></div>
         
         <div class="info-panel">
             <div><strong>Controls:</strong></div>
-            <div>Mouse: Rotate view</div>
-            <div>Wheel: Zoom in/out</div>
-            <div>Hover: Planet info</div>
+            <div>• Mouse: Rotate view</div>
+            <div>• Wheel: Zoom in/out</div>
+            <div>• Hover: Planet info</div>
         </div>
         
         <div id="tooltip" class="planet-tooltip"></div>
@@ -33,5 +42,5 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="main.js"></script>
-    </body>
+</body>
 </html>
