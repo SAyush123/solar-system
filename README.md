@@ -1,10 +1,10 @@
 # 3D Solar System Simulation with Three.js
 
-This project is a fully interactive, mobile-responsive 3D simulation of the solar system built using [Three.js]. It features realistic planetary motion, dynamic orbital speed control, and optional enhancements like tooltips, pause/resume, and theme toggle.
+This project is a fully interactive, mobile-responsive 3D simulation of the solar system built using Three.js. It features realistic planetary motion, dynamic orbital speed control, and optional enhancements like tooltips, pause/resume, and theme toggle.
 
 ---
 
-## 🚀 Features
+## Features
 
 * 3D solar system with Sun and 8 planets (Mercury to Neptune)
 * Realistic orbit and self-rotation animation
@@ -29,7 +29,7 @@ This project is a fully interactive, mobile-responsive 3D simulation of the sola
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -46,7 +46,7 @@ Or run a local server (recommended for better performance):
 
 ---
 
-## 🎽️ Demo Video
+## Demo Video
 
 > A demo video is included in the submission showcasing:
 >
@@ -56,7 +56,7 @@ Or run a local server (recommended for better performance):
 
 ---
 
-## 🧪 How It Works
+## How It Works
 
 * Planets are modeled as spheres and animated using `requestAnimationFrame` + `THREE.Clock`.
 * Each planet has its own orbit group and rotation logic.
@@ -66,7 +66,7 @@ Or run a local server (recommended for better performance):
 
 ---
 
-## ✅ Evaluation Criteria Checklist
+## Evaluation Criteria Checklist
 
 * Accurate usage of Three.js
 * Smooth orbit animations
@@ -76,14 +76,14 @@ Or run a local server (recommended for better performance):
 
 ---
 
-## 🙌 Acknowledgements
+## Acknowledgements
 
 * Three.js for 3D rendering
 * Assignment provided by [EmptyCup](https://emptycup.in)
 
 ---
 
-## 📬 Contact
+## Contact
 
 For queries or improvements:
 **Name:** Ayush Sharma
